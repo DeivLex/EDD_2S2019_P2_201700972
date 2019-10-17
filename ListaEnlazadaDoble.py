@@ -104,17 +104,6 @@ class ListaDoble(object):
     def final(self):
         return self.__ultimo
 
-    def cambiar(self,posx,posy):
-        nodo = self.__primero
-        while (nodo !=None):
-            tempx=nodo.posx
-            tempy=nodo.posy
-            nodo.posx=posx
-            nodo.posy=posy
-            posx= tempx
-            posy=tempy
-            nodo=nodo.pSig
-
     def vaciar(self):
         self.__primero=None
         self.__ultimo=None
