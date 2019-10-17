@@ -3,6 +3,9 @@ import time
 from curses import KEY_RIGHT, KEY_LEFT, KEY_UP, KEY_DOWN #import special KEYS from the curses library
 
 import curses.textpad
+from ListaEnlazadaDoble import ListaDoble
+
+datos = ListaDoble()
 
 def test_textpad():
     inp = curses.newwin(8,55, 0,0)
