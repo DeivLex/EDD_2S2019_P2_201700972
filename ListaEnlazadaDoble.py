@@ -1,8 +1,12 @@
 # Creamos la clase nodo
 class Nodo(object):
-    def __init__(self,posx=None, posy = None):
-        self.posx=posx
-        self.posy=posy
+    def __init__(self,INDEX=None, TIMESTAMP = None , CLASS=None, DATA=None, PREVIOUSHASH = None , HASH=None):
+        self.INDEX=INDEX
+        self.TIMESTAMP=TIMESTAMP
+        self.CLASS=CLASS
+        self.DATA=DATA
+        self.PREVIOUSHASH=PREVIOUSHASH
+        self.HASH=HASH
         self.pSig = None
         self.pAnt = None
     
@@ -18,8 +22,8 @@ class ListaDoble(object):
             return True
 
         # Método para agregar elementos en el frente de la linked list
-    def AddInicio(self, posx,posy):
-        nuevo = Nodo(posx,posy)
+    def AddInicio(self, INDEX, TIMESTAMP, CLASS, DATA, PREVIOUSHASH , HASH):
+        nuevo = Nodo(INDEX,TIMESTAMP,CLASS,DATA,PREVIOUSHASH,HASH)
         if self.EstaVacia()==True:
             self.__primero = self.__ultimo = nuevo
         else:
@@ -28,8 +32,8 @@ class ListaDoble(object):
             self.__primero = nuevo
 
     # Método para agregar elementos al final de la linked list
-    def AddFinal(self, posx, posy):
-        nuevo = Nodo(posx,posy)
+    def AddFinal(self, INDEX, TIMESTAMP, CLASS, DATA, PREVIOUSHASH , HASH):
+        nuevo = Nodo(INDEX,TIMESTAMP,CLASS,DATA,PREVIOUSHASH,HASH)
         if self.EstaVacia()==True:
             self.__primero = self.__ultimo = nuevo
         else:
@@ -80,7 +84,7 @@ class ListaDoble(object):
             Validar = True
             node = self.__primero
             while (Validar):
-                print(node.posx,node.posy,end =" => ")
+                print(node.HASH,node.PREVIOUSHASH,end =" => ")
                 if node == self.__ultimo:
                     Validar = False
                 else:
@@ -92,7 +96,7 @@ class ListaDoble(object):
             Validar = True
             node = self.__ultimo
             while (Validar):
-                print(node.posx,node.posy,end =" => ")
+                print(node.HASH,node.PREVIOUSHASH,end =" => ")
                 if node == self.__primero:
                     Validar = False
                 else:
@@ -107,6 +111,4 @@ class ListaDoble(object):
     def vaciar(self):
         self.__primero=None
         self.__ultimo=None
-        
-
 

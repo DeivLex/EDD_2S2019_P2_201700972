@@ -1,6 +1,7 @@
 import csv
 import json
 import hashlib
+import time
 
 INDEX=0
 TIMESTAMP=''
@@ -8,7 +9,10 @@ CLASS=''
 DATA=''
 PREVIOUSHASH='0000'
 HASH=''
+UnionBytes=''
 jsonEnvio =''
+dia = time.strftime("%d-%m-%y")
+hora = time.strftime("%I:%M:%S")
 
 with open('E:\\Back Up Charles\\Davis\\Usac\\Semestre 6\\Estructuras\\Practica 2\\ejemplo.csv') as f:
     reader = csv.reader(f)
@@ -17,11 +21,12 @@ with open('E:\\Back Up Charles\\Davis\\Usac\\Semestre 6\\Estructuras\\Practica 2
         if(i==0):
             CLASS = row[1]
         if(i==1):
-            TIMESTAMP=''
+            TIMESTAMP=dia+'-::'+hora
             DATA = row[1]
             if(INDEX==0):
                 PREVIOUSHASH='0000'
-            bs = bytes(DATA, 'utf-8')
+            UnionBytes=str(INDEX)+TIMESTAMP+CLASS+DATA+PREVIOUSHASH
+            bs = bytes(UnionBytes, 'utf-8')
             HASH=hashlib.new('sha256',bs)
             HashString = HASH.hexdigest()
             jsonEnvio= '{ "INDEX": '+str(INDEX)+', "TIMESTAMP": '+TIMESTAMP+', "CLASS": '+CLASS+', "DATA": '+DATA+', "PREVIOUSHASH": '+PREVIOUSHASH+', "HASH": '+HashString
