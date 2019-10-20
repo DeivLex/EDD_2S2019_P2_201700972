@@ -1,3 +1,7 @@
+import socket
+import select
+import sys
+
 import curses #import the curses library
 import time
 import csv
@@ -6,6 +10,33 @@ from curses import KEY_RIGHT, KEY_LEFT, KEY_UP, KEY_DOWN #import special KEYS fr
 
 import curses.textpad
 from ListaEnlazadaDoble import ListaDoble
+
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+if len(sys.argv) != 3:
+	print ("Correct usage: script, IP address, port number")
+	exit()
+IP_address = str(sys.argv[1])
+Port = int(sys.argv[2])
+server.connect((IP_address, Port))
+
+def ServerC():
+	while True:
+		read_sockets = select.select([server], [], [], 1)[0]
+		import msvcrt
+		if msvcrt.kbhit(): read_sockets.append(sys.stdin)
+		for socks in read_sockets:
+			if socks == server:
+				message = socks.recv(2048)
+				print (message.decode('utf-8'))
+			else:
+				message = sys.stdin.readline()
+				texto_a_enviar = message
+				server.sendall(texto_a_enviar.encode('utf-8'))	
+				sys.stdout.write("<You>")
+				sys.stdout.write(message)
+				sys.stdout.flush()
+	server.close()
+
 
 holahola = ""
 
@@ -124,6 +155,7 @@ while(keystroke==-1):
         keystroke=-1
     elif(keystroke==51):
         paint_title(window, ' REPORTS ')
+        ServerC()
         wait_esc(window)
         paint_menu(window)
         keystroke=-1
