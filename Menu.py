@@ -8,7 +8,6 @@ import csv
 import curses.textpad
 from curses import KEY_RIGHT, KEY_LEFT, KEY_UP, KEY_DOWN #import special KEYS from the curses library
 
-import curses.textpad
 from ListaEnlazadaDoble import ListaDoble
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

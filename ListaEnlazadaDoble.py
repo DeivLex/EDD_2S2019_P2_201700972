@@ -103,7 +103,7 @@ class ListaDoble(object):
                     node = node.pAnt
     
     def head(self):
-        return self.__primero 
+        return self.__primero
 
     def final(self):
         return self.__ultimo
@@ -111,4 +111,3 @@ class ListaDoble(object):
     def vaciar(self):
         self.__primero=None
         self.__ultimo=None
-

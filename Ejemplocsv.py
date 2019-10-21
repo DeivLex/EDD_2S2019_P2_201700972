@@ -14,7 +14,7 @@ jsonEnvio =''
 dia = time.strftime("%d-%m-%y")
 hora = time.strftime("%I:%M:%S")
 
-with open('E:\\Back Up Charles\\Davis\\Usac\\Semestre 6\\Estructuras\\Practica 2\\ejemplo.csv') as f:
+with open('C:\\Users\\Davis\\Desktop\\ejemplo.csv') as f:
     reader = csv.reader(f)
     i = 0
     for row in reader:
@@ -29,7 +29,7 @@ with open('E:\\Back Up Charles\\Davis\\Usac\\Semestre 6\\Estructuras\\Practica 2
             bs = bytes(UnionBytes, 'utf-8')
             HASH=hashlib.new('sha256',bs)
             HashString = HASH.hexdigest()
-            jsonEnvio= '{ "INDEX": '+str(INDEX)+', "TIMESTAMP": '+TIMESTAMP+', "CLASS": '+CLASS+', "DATA": '+DATA+', "PREVIOUSHASH": '+PREVIOUSHASH+', "HASH": '+HashString
+            jsonEnvio= '{ "INDEX": "'+str(INDEX)+'", "TIMESTAMP": "'+TIMESTAMP+'", "CLASS": "'+CLASS+'", "DATA": '+DATA+', "PREVIOUSHASH": "'+PREVIOUSHASH+'", "HASH": "'+HashString+'"'
             print (jsonEnvio)
             PREVIOUSHASH=HASH
         i=1
