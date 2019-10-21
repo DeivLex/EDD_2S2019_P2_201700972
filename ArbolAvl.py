@@ -173,3 +173,7 @@ class AVL:
 
     def getRoot(self):
         return self.root
+    
+    def Clear(self):
+        self.root = None
+        self.size = None
