@@ -14,6 +14,12 @@ from curses import KEY_RIGHT, KEY_LEFT, KEY_UP, KEY_DOWN #import special KEYS fr
 from ListaEnlazadaDoble import ListaDoble
 from ArbolAvl import AVL
 
+class UniformDictList(list):
+    def __getitem__(self, key):
+        if isinstance(key, slice):
+            return DictView(self, key)
+        return super().__getitem__(key)
+
 Arbol = AVL()
 datos = ListaDoble()
 
@@ -120,10 +126,9 @@ while True:
 			node = datos.head()
 			for i in range(int(IndexSelect)):
 				node = node.pSig
-			dat= json.loads(node.DATA)
-			obinfo=dat['value']
-			print(obinfo)
-
+			Sad = json.loads(node.DATA)
+			Sad1=Sad['value']
+			print(Sad1)
 
 		elif ans=="3":
 			ReporteBlockes()
